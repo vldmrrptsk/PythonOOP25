@@ -1,56 +1,35 @@
-from shapes_task.shapes import Shape, Square, Triangle, Rectangle, Circle
-import random
+from shapes_task.square import Square
+from shapes_task.triangle import Triangle
+from shapes_task.rectangle import Rectangle
+from shapes_task.circle import Circle
 
-shapes_list = ['Square', 'Triangle', 'Rectangle', 'Circle']
-area_dict = {}
-perimetr_dict = {}
-i, j, k, p, area, perimeter = 0, 0, 0, 0, 0, 0
+shapes = [
+    Square(5),
+    Triangle(0, 0, 3, 0, 0, 4),
+    Rectangle(4, 6),
+    Circle(3),
+    Square(7),
+    Triangle(0, 0, 6, 0, 3, 5),
+    Rectangle(5, 5),
+    Circle(4.5),
+    Triangle(1, 1, 4, 1, 2, 5),
+    Rectangle(2, 8)
+]
 
-for _ in range(1, 11):
-    figure = random.choice(shapes_list)
 
-    if figure == 'Square':
-        side = random.randint(1, 20)
-        sq = Square(side)
-        area = sq.get_area()
-        perimeter = sq.get_perimeter()
-        i += 1
-        figure = figure + str(i)
+def find_max_area_shape(sh):
+    return sorted(sh, key=lambda shape: shape.get_area(), reverse=True)[0]
 
-    if figure == 'Triangle':
-        x1 = random.randint(0, 20)
-        y1 = random.randint(0, 20)
-        x2 = random.randint(0, 20)
-        y2 = random.randint(0, 20)
-        x3 = random.randint(0, 20)
-        y3 = random.randint(0, 20)
-        tr = Triangle(x1, y1, x2, y2, x3, y3)
-        area = tr.get_area()
-        perimeter = tr.get_perimeter()
-        j += 1
-        figure = figure + str(j)
+def find_second_largest_perimeter_shape(sh):
+    return sorted(sh, key=lambda shape: shape.get_perimeter(), reverse=True)[1]
 
-    if figure == 'Rectangle':
-        width = random.randint(1, 20)
-        height = random.randint(1, 20)
-        rc = Rectangle(width, height)
-        area = rc.get_area()
-        perimeter = rc.get_perimeter()
-        p += 1
-        figure = figure + str(p)
+max_area_shape = find_max_area_shape(shapes)
+print("Фигура с максимальной площадью:")
+print(max_area_shape)
+print(f"Площадь: {max_area_shape.get_area()}")
+print()
 
-    if figure == 'Circle':
-        radius = random.randint(1, 20)
-        cr = Circle(radius)
-        area = cr.get_area()
-        perimeter = cr.get_perimeter()
-        k += 1
-        figure = figure + str(k)
-
-    area_dict[figure] = area
-    perimetr_dict[figure] = perimeter
-
-sorted_areas = sorted(area_dict.items(), key=lambda x: x[1], reverse=True)
-sorted_perimetrs = sorted(perimetr_dict.items(), key=lambda x: x[1], reverse=True)
-print(f"Фигура с наибольшей площадью: {sorted_areas[0]}")
-print(f"Фигура со вторым по величине периметром: {sorted_perimetrs[1]}")
+second_perimeter_shape = find_second_largest_perimeter_shape(shapes)
+print("Фигура со вторым по величине периметром:")
+print(second_perimeter_shape)
+print(f"Периметр: {second_perimeter_shape.get_perimeter()}")
