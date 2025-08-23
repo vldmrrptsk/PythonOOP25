@@ -26,7 +26,7 @@ class Range:
     def is_inside(self, number: float) -> bool:
         return self.__start <= number <= self.__end
 
-    def get_interval_intersection(self, other):
+    def get_intersection(self, other):
         left_boarder = max(self.__start, other.__start)
         right_boarder = min(self.__end, other.__end)
 
@@ -35,21 +35,30 @@ class Range:
 
         return Range(left_boarder, right_boarder)
 
-    def get_interval_union(self, other):
-        if self.__end <= other.__start or self.__start >= other.__end:
+    def get_union(self, other):
+        if self.__end < other.__start or self.__start > other.__end:
             return [Range(self.__start, self.__end), Range(other.__start, other.__end)]
 
         return [Range(min(self.__start, other.__start), max(self.__end, other.__end))]
 
-    def get_interval_difference(self, other):
+    def get_difference(self, other):
         if self.__end <= other.__start or self.__start >= other.__end:
-            return [Range(self.start, self.end)]
+            return [Range(self.__start, self.__end)]
 
-        if self.start < other.start:
-            return [Range(self.start, other.start)]
+        if other.__start <= self.__start and other.__end >= self.__end:
+            return []
 
-        if self.end > other.end:
-            return [Range(other.end, self.end)]
+        if other.__start <= self.__start and other.__end < self.__end:
+            return [Range(other.__end, self.__end)]
+
+        if other.__start > self.__start and other.__end >= self.__end:
+            return [Range(self.__start, other.__start)]
+
+        if other.__start > self.__start and other.__end < self.__end:
+            return [
+                Range(self.__start, other.__start),
+                Range(other.__end, self.__end)
+            ]
 
         return []
 
