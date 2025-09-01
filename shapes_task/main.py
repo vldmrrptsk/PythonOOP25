@@ -17,19 +17,21 @@ shapes = [
 ]
 
 
-def find_max_area_shape(sh):
-    return sorted(sh, key=lambda shape: shape.get_area(), reverse=True)[0]
+def get_max_area_shape(figures):
+    return sorted(figures, key=lambda shape: shape.get_area(), reverse=True)[0]
 
-def find_second_largest_perimeter_shape(sh):
-    return sorted(sh, key=lambda shape: shape.get_perimeter(), reverse=True)[1]
 
-max_area_shape = find_max_area_shape(shapes)
+def get_second_max_perimeter_shape(figures):
+    return sorted(figures, key=lambda shape: shape.get_perimeter(), reverse=True)[1]
+
+
+max_area_shape = get_max_area_shape(shapes)
 print("Фигура с максимальной площадью:")
 print(max_area_shape)
 print(f"Площадь: {max_area_shape.get_area()}")
 print()
 
-second_perimeter_shape = find_second_largest_perimeter_shape(shapes)
+second_perimeter_shape = get_second_max_perimeter_shape(shapes)
 print("Фигура со вторым по величине периметром:")
 print(second_perimeter_shape)
 print(f"Периметр: {second_perimeter_shape.get_perimeter()}")

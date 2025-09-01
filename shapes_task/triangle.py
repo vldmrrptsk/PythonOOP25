@@ -1,4 +1,4 @@
-from shapes_task.shapes import Shape
+from shapes_task.shape import Shape
 import math
 
 
@@ -75,10 +75,11 @@ class Triangle(Shape):
         side_a = math.hypot(self.__x_2 - self.__x_1, self.__y_2 - self.__y_1)
         side_b = math.hypot(self.__x_3 - self.__x_2, self.__y_3 - self.__y_2)
         side_c = math.hypot(self.__x_1 - self.__x_3, self.__y_1 - self.__y_3)
+
         return side_a + side_b + side_c
 
     def __repr__(self) -> str:
-        return (f"Треугольник с вершинами ({self.__x_1} {self.__y_1}), "
+        return (f"Треугольник с вершинами ({self.__x_1} {self.__y_1})"
                 f"({self.__x_2} {self.__y_2}), "
                 f"({self.__x_3} {self.__y_3}),")
 
@@ -93,5 +94,5 @@ class Triangle(Shape):
         )
 
     def __hash__(self):
-        return hash((self.__y_1, self.__y_2, self.__y_3,
+        return hash((self.__x_1, self.__x_2, self.__x_3,
                      self.__y_1, self.__y_2, self.__y_3))

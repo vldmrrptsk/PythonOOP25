@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
 
+
 class Shape(ABC):
     @abstractmethod
-    def get_width(self):
+    def get_width(self) :
         pass
 
     @abstractmethod

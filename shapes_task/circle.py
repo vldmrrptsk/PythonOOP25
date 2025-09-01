@@ -1,5 +1,6 @@
-from shapes_task.shapes import Shape
+from shapes_task.shape import Shape
 import math
+
 
 class Circle(Shape):
     def __init__(self, radius: float) -> None:

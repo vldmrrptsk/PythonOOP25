@@ -1,5 +1,5 @@
-from shapes_task.shapes import Shape
-import math
+from shapes_task.shape import Shape
+
 
 class Rectangle(Shape):
     def __init__(self, width: float, height: float) -> None:
@@ -7,19 +7,19 @@ class Rectangle(Shape):
         self.__height = height
 
     @property
-    def width_side(self) -> float:
+    def width(self) -> float:
         return self.__width
 
-    @width_side.setter
-    def width_side(self, width) -> None:
+    @width.setter
+    def width(self, width) -> None:
         self.__width = width
 
     @property
-    def height_side(self) -> float:
+    def height(self) -> float:
         return self.__height
 
-    @height_side.setter
-    def height_side(self, height) -> None:
+    @height.setter
+    def height(self, height) -> None:
         self.__height = height
 
     def get_width(self):
