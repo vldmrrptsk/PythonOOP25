@@ -27,13 +27,13 @@ class Range:
         return self.__start <= number <= self.__end
 
     def get_intersection(self, other):
-        left_boarder = max(self.__start, other.__start)
-        right_boarder = min(self.__end, other.__end)
+        left_border = max(self.__start, other.__start)
+        right_border = min(self.__end, other.__end)
 
-        if left_boarder >= right_boarder:
+        if left_border >= right_border:
             return None
 
-        return Range(left_boarder, right_boarder)
+        return Range(left_border, right_border)
 
     def get_union(self, other):
         if self.__end < other.__start or self.__start > other.__end:
@@ -48,19 +48,16 @@ class Range:
         if other.__start <= self.__start and other.__end >= self.__end:
             return []
 
-        if other.__start <= self.__start and other.__end < self.__end:
+        if other.__start <= self.__start:
             return [Range(other.__end, self.__end)]
 
-        if other.__start > self.__start and other.__end >= self.__end:
+        if other.__end >= self.__end:
             return [Range(self.__start, other.__start)]
 
-        if other.__start > self.__start and other.__end < self.__end:
-            return [
-                Range(self.__start, other.__start),
-                Range(other.__end, self.__end)
-            ]
-
-        return []
+        return [
+            Range(self.__start, other.__start),
+            Range(other.__end, self.__end)
+        ]
 
     def __repr__(self) -> str:
         return f"Range({self.start}, {self.end})"

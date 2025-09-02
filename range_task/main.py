@@ -1,12 +1,12 @@
 from range_task.range import Range
 import random
 
-range = Range(2.5, 7.8)
-print(f"Диапазон: от {range.start} до {range.end}")
-print(f"Длина диапазона: {range.length}")
+interval = Range(2.5, 7.8)
+print(f"Диапазон: от {interval.start} до {interval.end}")
+print(f"Длина диапазона: {interval.length}")
 
 input_number = 5.0
-print(f"Число {input_number} внутри диапазона? {range.is_inside(input_number)}")
+print(f"Число {input_number} внутри диапазона? {interval.is_inside(input_number)}")
 
 left_border_1 = random.randint(0, 100)
 right_border_1 = random.randint(left_border_1, 100)
