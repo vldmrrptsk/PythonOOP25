@@ -14,15 +14,15 @@ right_border_1 = random.randint(left_border_1, 100)
 left_border_2 = random.randint(0, 100)
 right_border_2 = random.randint(left_border_2, 100)
 
-interval_1 = Range(left_border_1, right_border_1)
-interval_2 = Range(left_border_2, right_border_2)
+range_1 = Range(left_border_1, right_border_1)
+range_2 = Range(left_border_2, right_border_2)
 
 print(f"Пересечение интервалов {left_border_1, right_border_1},"
       f" {left_border_2, right_border_2}:"
-      f" {interval_1.get_intersection(interval_2)}")
+      f" {range_1.get_intersection(range_2)}")
 print(f"Объединение интервалов {left_border_1, right_border_1}, "
       f"{left_border_2, right_border_2}: "
-      f"{interval_1.get_union(interval_2)}")
+      f"{range_1.get_union(range_2)}")
 print(f"Разность интервалов {left_border_1, right_border_1}, "
       f"{left_border_2, right_border_2}: "
-      f"{interval_1.get_difference(interval_2)}")
+      f"{range_1.get_difference(range_2)}")
